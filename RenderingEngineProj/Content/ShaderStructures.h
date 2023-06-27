@@ -15,5 +15,7 @@ namespace RenderingEngineProj
 	{
 		DirectX::XMFLOAT3 pos;
 		DirectX::XMFLOAT3 color;
+		DirectX::XMFLOAT3 normal;
+		DirectX::XMFLOAT3 eye;
 	};
 }

@@ -8,20 +8,38 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <SwapChainPanel x:Name="swapChainPanel">
-    <TextBlock Text="Hello from XAML!"
+    <SwapChainPanel x:Name="swapChainPanel" Margin="-4,-2,4,2">
+        <TextBlock Text="Hello from XAML!"
                HorizontalAlignment="Right"
                VerticalAlignment="Top"
                FontSize="30" />
-  </SwapChainPanel>
+        <Button Content="Import Mesh1" Height="54" Margin="64,25,0,0" VerticalAlignment="Top" Width="107"  Click="Button_Click_ImportMesh1"/>
+        <Button Content="Import Mesh2" Height="54" Margin="64,91,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_ImportMesh2"/>
+        <Button Content="Import Mesh3" Height="54" Margin="64,155,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_ImportMesh3"/>
 
-  <Page.BottomAppBar>
-    <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-        <AppBarButton AutomationProperties.Name="Sample Button"
+
+        <Button Content="Yaw" Height="54" Margin="594,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Yaw"/>
+        <Button Content="Pitch" Height="54" Margin="713,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Pitch"/>
+        <Button Content="Roll" Height="54" Margin="834,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Roll"/>
+
+        <Button Content="ShiftX (+1)" Height="45" Margin="23,320,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftX"/>
+        <Button Content="ShiftX (-1)" Height="45" Margin="127,320,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftX1"/>
+        <Button Content="ShiftY (+1)" Height="45" Margin="23,387,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftY"/>
+        <Button Content="ShiftY (-1)" Height="45" Margin="127,387,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftY1"/>
+        <Button Content="ShiftZ (+1)" Height="45" Margin="23,447,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftZ"/>
+        <Button Content="ShiftZ (-1)" Height="45" Margin="127,447,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftZ1"/>
+
+
+    </SwapChainPanel>
+
+    <Page.BottomAppBar>
+        <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <AppBarButton AutomationProperties.Name="Sample Button"
                       AutomationProperties.AutomationId="SampleAppBarButton"
                       Click="AppBarButton_Click"/>
-      </StackPanel>
-    </AppBar>
-  </Page.BottomAppBar>
+
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
 </Page>

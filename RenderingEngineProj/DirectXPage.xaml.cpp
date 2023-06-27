@@ -72,6 +72,7 @@ DirectXPage::DirectXPage():
 		m_coreInput->PointerPressed += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &DirectXPage::OnPointerPressed);
 		m_coreInput->PointerMoved += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &DirectXPage::OnPointerMoved);
 		m_coreInput->PointerReleased += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &DirectXPage::OnPointerReleased);
+		m_coreInput->PointerWheelChanged += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &DirectXPage::OnPointerWheelChanged);
 
 		// Begin processing input messages as they're delivered.
 		m_coreInput->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
@@ -160,25 +161,60 @@ void DirectXPage::AppBarButton_Click(Object^ sender, RoutedEventArgs^ e)
 	// then fill in event handlers (like this one).
 }
 
+
+
+
+
+//--
+void DirectXPage::OnPointerWheelChanged(Object^ sender, PointerEventArgs^ e)
+{
+	auto pointerProperties = e->CurrentPoint->Properties;
+	int scrollDelta = pointerProperties->MouseWheelDelta;
+
+
+	// When the scroll is used begin Zoom process.
+	m_main->Set_Zoom(scrollDelta);
+	test = true;
+}
+//--
+
+
+
+
+
+
 void DirectXPage::OnPointerPressed(Object^ sender, PointerEventArgs^ e)
 {
-	// When the pointer is pressed begin tracking the pointer movement.
-	m_main->StartTracking();
+	// Check if the pointer is a right pointer
+	if (e->CurrentPoint->PointerDevice->PointerDeviceType == Windows::Devices::Input::PointerDeviceType::Mouse &&
+		e->CurrentPoint->Properties->IsRightButtonPressed)
+	{
+		// Right pointer is pressed - When the pointer is pressed begin tracking the pointer movement.
+		m_main->StartTracking(e->CurrentPoint->Position.X, e->CurrentPoint->Position.Y);
+	}
+	// Check if the pointer is a left pointer
+	if (e->CurrentPoint->PointerDevice->PointerDeviceType == Windows::Devices::Input::PointerDeviceType::Mouse &&
+		e->CurrentPoint->Properties->IsLeftButtonPressed)
+	{
+
+	}
+
 }
 
 void DirectXPage::OnPointerMoved(Object^ sender, PointerEventArgs^ e)
 {
+
 	// Update the pointer tracking code.
 	if (m_main->IsTracking())
 	{
-		m_main->TrackingUpdate(e->CurrentPoint->Position.X);
+		m_main->TrackingUpdate(e->CurrentPoint->Position.X, e->CurrentPoint->Position.Y);
 	}
 }
 
 void DirectXPage::OnPointerReleased(Object^ sender, PointerEventArgs^ e)
 {
 	// Stop tracking pointer movement when the pointer is released.
-	m_main->StopTracking();
+	m_main->StopTracking(e->CurrentPoint->Position.X, e->CurrentPoint->Position.Y);
 }
 
 void DirectXPage::OnCompositionScaleChanged(SwapChainPanel^ sender, Object^ args)
@@ -193,4 +229,75 @@ void DirectXPage::OnSwapChainPanelSizeChanged(Object^ sender, SizeChangedEventAr
 	critical_section::scoped_lock lock(m_main->GetCriticalSection());
 	m_deviceResources->SetLogicalSize(e->NewSize);
 	m_main->CreateWindowSizeDependentResources();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh1_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh2(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh2_Pressed();
+}
+
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh3(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh3_Pressed();
+}
+
+void RenderingEngineProj::DirectXPage::Button_Click_Yaw(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->Yaw_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_Pitch(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->Pitch_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_Roll(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->Roll_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftX(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftX_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftX1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftX1_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftY(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftY_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftY1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftY1_Pressed();
+
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftZ(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftZ_Pressed();
+}
+
+
+void RenderingEngineProj::DirectXPage::Button_Click_ShiftZ1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ShiftZ1_Pressed();
 }
