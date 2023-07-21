@@ -94,6 +94,15 @@
     <None Include="flowerpot.3mf" />
     <None Include="wineglass.3mf" />
     <None Include="sensor.3MF" />
+    <None Include="packages.config" />
+    <None Include="boat.3mf" />
+    <None Include="pyramid.3mf" />
+    <None Include="voronoi.3mf" />
+    <None Include="implant.3mf" />
+    <None Include="panther.3mf" />
+    <None Include="rocket vase.3mf" />
+    <None Include="cat.3mf" />
+    <None Include="skull.3mf" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib3mf.lib" />

@@ -30,6 +30,7 @@ DirectXPage::DirectXPage():
 {
 	InitializeComponent();
 
+
 	// Register event handlers for page lifecycle.
 	CoreWindow^ window = Window::Current->CoreWindow;
 
@@ -163,9 +164,24 @@ void DirectXPage::AppBarButton_Click(Object^ sender, RoutedEventArgs^ e)
 
 
 
-
-
 //--
+
+
+void DirectXPage::NavigationView_PaneOpened(Windows::UI::Xaml::Controls::NavigationView^ sender, Platform::Object^ args)
+{
+}
+
+
+
+void DirectXPage::NavigationView_PaneClosed(Windows::UI::Xaml::Controls::NavigationView^ sender, Platform::Object^ args)
+{
+	swapChainPanel->Width = this->ActualWidth;
+}
+
+
+
+
+
 void DirectXPage::OnPointerWheelChanged(Object^ sender, PointerEventArgs^ e)
 {
 	auto pointerProperties = e->CurrentPoint->Properties;
@@ -248,6 +264,21 @@ void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh3(Platform::Object
 	m_main->ImportMesh3_Pressed();
 }
 
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh4(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh4_Pressed();
+}
+
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh5(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh5_Pressed();
+}
+
+void RenderingEngineProj::DirectXPage::Button_Click_ImportMesh6(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	m_main->ImportMesh6_Pressed();
+}
+
 void RenderingEngineProj::DirectXPage::Button_Click_Yaw(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	m_main->Yaw_Pressed();
@@ -301,3 +332,32 @@ void RenderingEngineProj::DirectXPage::Button_Click_ShiftZ1(Platform::Object^ se
 {
 	m_main->ShiftZ1_Pressed();
 }
+
+
+void RenderingEngineProj::DirectXPage::MenuButton1_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+
+}
+
+void RenderingEngineProj::DirectXPage::MenuButton2_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+
+void RenderingEngineProj::DirectXPage::MenuButton3_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+
+void RenderingEngineProj::DirectXPage::Import_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+
+void RenderingEngineProj::DirectXPage::Edit_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+void RenderingEngineProj::DirectXPage::About_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+void RenderingEngineProj::DirectXPage::Settings_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+}
+

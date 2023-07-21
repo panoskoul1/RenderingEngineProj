@@ -143,6 +143,24 @@ void RenderingEngineProjMain::ProcessInput()
 		m_sceneRenderer->Import3MFFile(filename);
 		ImportMesh3_Button_Pressed = false;
 	}
+	if (ImportMesh4_Button_Pressed == true)
+	{
+		const std::string filename = "implant.3mf";
+		m_sceneRenderer->Import3MFFile(filename);
+		ImportMesh4_Button_Pressed = false;
+	}
+	if (ImportMesh5_Button_Pressed == true)
+	{
+		const std::string filename = "skull.3mf";
+		m_sceneRenderer->Import3MFFile(filename);
+		ImportMesh5_Button_Pressed = false;
+	}
+	if (ImportMesh6_Button_Pressed == true)
+	{
+		const std::string filename = "panther.3mf";
+		m_sceneRenderer->Import3MFFile(filename);
+		ImportMesh6_Button_Pressed = false;
+	}
 	//
 	if (ShiftX_Button_Pressed == true)
 	{
@@ -177,17 +195,17 @@ void RenderingEngineProjMain::ProcessInput()
 	//
 	if (Yaw_Button_Pressed == true)
 	{
-		m_sceneRenderer->Rotate( 0.25f, 0.0f, 0.0f);
+		m_sceneRenderer->Yaw( 0.05f );
 		Yaw_Button_Pressed = false;
 	}
 	if (Pitch_Button_Pressed == true)
 	{
-		m_sceneRenderer->Rotate(0.0f, 0.0f, 0.25f);
+		m_sceneRenderer->Pitch( 0.05f );
 		Pitch_Button_Pressed = false;
 	}
 	if (Roll_Button_Pressed == true)
 	{
-		m_sceneRenderer->Rotate(0.0f, 0.25f, 0.0f);
+		m_sceneRenderer->Roll( 0.05f );
 		Roll_Button_Pressed = false;
 	}
 }

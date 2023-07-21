@@ -68,6 +68,9 @@ namespace RenderingEngineProj
 		void Button_Click_ImportMesh1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ImportMesh2(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ImportMesh3(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Button_Click_ImportMesh4(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Button_Click_ImportMesh5(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Button_Click_ImportMesh6(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 
 
 		void Button_Click_Yaw(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
@@ -75,13 +78,30 @@ namespace RenderingEngineProj
 		void Button_Click_Roll(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 
 
-		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		//void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftX(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftX1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftY(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftY1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftZ(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click_ShiftZ1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+
+
+		void MenuButton1_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void MenuButton2_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void MenuButton3_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+
+		void Import_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Edit_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void About_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Settings_Tapped(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+
+		void NavigationView_PaneOpened(Windows::UI::Xaml::Controls::NavigationView^ sender, Platform::Object^ args);
+		void NavigationView_PaneClosed(Windows::UI::Xaml::Controls::NavigationView^ sender, Platform::Object^ args);
+
+
+
+
 	};
 }
 

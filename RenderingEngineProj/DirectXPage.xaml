@@ -8,38 +8,86 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <SwapChainPanel x:Name="swapChainPanel" Margin="-4,-2,4,2">
-        <TextBlock Text="Hello from XAML!"
-               HorizontalAlignment="Right"
-               VerticalAlignment="Top"
-               FontSize="30" />
-        <Button Content="Import Mesh1" Height="54" Margin="64,25,0,0" VerticalAlignment="Top" Width="107"  Click="Button_Click_ImportMesh1"/>
-        <Button Content="Import Mesh2" Height="54" Margin="64,91,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_ImportMesh2"/>
-        <Button Content="Import Mesh3" Height="54" Margin="64,155,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_ImportMesh3"/>
+    <Grid>
+
+        <SplitView x:Name="ShellSplitView" 
+           IsPaneOpen="True" 
+           DisplayMode="Inline" 
+           CompactPaneLength="150" 
+           OpenPaneLength="150" >
+            <SplitView.Pane>
+                <Grid x:Name="SplitViewPane" >
+
+                    <NavigationView x:Name="navView" 
+                                    IsPaneOpen="True" 
+                                    PaneDisplayMode="Left" 
+                                    AlwaysShowHeader="False" Margin="0,0,0,-1" >
+                        <NavigationView.MenuItems>
+                            <NavigationViewItem Content="Import" Icon="Import" Tapped="Import_Tapped"/>
+                                <NavigationViewItem Content="Import Mesh1" Tapped="Button_Click_ImportMesh1"/>
+                                <NavigationViewItem Content="Import Mesh2" Tapped="Button_Click_ImportMesh2"/>
+                                <NavigationViewItem Content="Import Mesh3" Tapped="Button_Click_ImportMesh3"/>
+                                <NavigationViewItem Content="Import Mesh4" Tapped="Button_Click_ImportMesh4"/>
+                                <NavigationViewItem Content="Import Mesh5" Tapped="Button_Click_ImportMesh5"/>
+                            <NavigationViewItem Content="Import Mesh6" Tapped="Button_Click_ImportMesh6"/>
+                            <NavigationViewItem Content="Edit" Icon="Edit" Tapped="Edit_Tapped"/>
+                            <NavigationViewItem Content="Settings" Icon="Setting" Tapped="Settings_Tapped"/>
+                            <NavigationViewItem Content="About" Icon="Help" Tapped="About_Tapped"/>
+
+                        </NavigationView.MenuItems>
+                    </NavigationView>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid >
+                    <SwapChainPanel x:Name="swapChainPanel">
+                        <!-- Your SwapChainPanel content -->
+                        <RelativePanel Margin="426,115,0,0" VerticalAlignment="Top">
+                            <Button x:Name="ButtonYaw" Content="Yaw" Height="54" Width="107" Click="Button_Click_Yaw" RelativePanel.AlignLeftWithPanel="True" Margin="0,0,50,0" />
+                            <Button x:Name="ButtonPitch" Content="Pitch" Height="54" Width="107" Click="Button_Click_Pitch" RelativePanel.RightOf="ButtonYaw" Margin="0,0,50,0"/>
+                            <Button x:Name="ButtonRoll" Content="Roll" Height="54" Width="107" Click="Button_Click_Roll" RelativePanel.RightOf="ButtonPitch"/>
+                        </RelativePanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="23,434,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Spacing="20">
+                            <Button Content="ShiftX (+1)" Height="45" Width="85" Click="Button_Click_ShiftX"/>
+                            <Button Content="ShiftX (-1)" Height="45" Width="85" Click="Button_Click_ShiftX1"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="23,502,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Spacing="20">
+                            <Button Content="ShiftY (+1)" Height="45" Width="85" Click="Button_Click_ShiftY"/>
+                            <Button Content="ShiftY (-1)" Height="45" Width="85" Click="Button_Click_ShiftY1"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="23,562,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Spacing="20">
+                            <Button Content="ShiftZ (+1)" Height="45" Width="85" Click="Button_Click_ShiftZ"/>
+                            <Button Content="ShiftZ (-1)" Height="45" Width="85" Click="Button_Click_ShiftZ1"/>
+                        </StackPanel>
+                    </SwapChainPanel>
+                </Grid>
+
+            </SplitView.Content>
+        </SplitView>
+
+    </Grid>
 
 
-        <Button Content="Yaw" Height="54" Margin="594,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Yaw"/>
-        <Button Content="Pitch" Height="54" Margin="713,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Pitch"/>
-        <Button Content="Roll" Height="54" Margin="834,74,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click_Roll"/>
-
-        <Button Content="ShiftX (+1)" Height="45" Margin="23,320,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftX"/>
-        <Button Content="ShiftX (-1)" Height="45" Margin="127,320,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftX1"/>
-        <Button Content="ShiftY (+1)" Height="45" Margin="23,387,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftY"/>
-        <Button Content="ShiftY (-1)" Height="45" Margin="127,387,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftY1"/>
-        <Button Content="ShiftZ (+1)" Height="45" Margin="23,447,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftZ"/>
-        <Button Content="ShiftZ (-1)" Height="45" Margin="127,447,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_ShiftZ1"/>
-
-
-    </SwapChainPanel>
-
-    <Page.BottomAppBar>
-        <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
+    <Page.TopAppBar>
+        <AppBar x:Name="bottomAppBar" Padding="0,0,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <AppBarButton AutomationProperties.Name="Sample Button"
-                      AutomationProperties.AutomationId="SampleAppBarButton"
-                      Click="AppBarButton_Click"/>
+                <AppBarButton Content="Sample Button"
+              AutomationProperties.Name="Sample Button"
+              AutomationProperties.AutomationId="SampleAppBarButton"
+              Click="AppBarButton_Click"/>
+                <Grid>
 
+                </Grid>
             </StackPanel>
         </AppBar>
-    </Page.BottomAppBar>
+    </Page.TopAppBar>
 </Page>
+    
+    
+    
+    

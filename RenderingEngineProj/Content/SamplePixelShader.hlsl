@@ -18,15 +18,18 @@ struct PixelShaderInput
     float3 color : COLOR;
     float3 normal : NORMAL;
     float3 camera_pos : EYE;
+    float2 tex : TEXCOORD1;
+
 };
 
 float4 main(PixelShaderInput input) : SV_TARGET
 {
     // Assuming these are your variables
-    float3 lightPosition = float3(-50, -50, -50);
+    float3 lightPosition = float3(-100.0f, -100.0f, -100.0f);
 
-    // Calculate light direction
-    float3 lightDir = normalize(lightPosition - input.x.xyz);
+    // Calculate light direction from light source to origin
+    //float3 lightDir = normalize(input.x.xyz - lightPosition);
+    float3 lightDir = normalize(float3(0.0f, 0.0f, 0.0f) - lightPosition);
 
     // Calculate view direction
     float3 viewDir = normalize(input.camera_pos - input.x.xyz);
@@ -35,8 +38,8 @@ float4 main(PixelShaderInput input) : SV_TARGET
     float3 normal = normalize(input.normal);
 
     // Set constant colors for ambient and diffuse light
-    float3 lightColor = float3(0.8, 0.8, 0.8);
-    float3 ambientColor = float3(0.6, 0.6, 0.6);
+    float3 lightColor = float3(0.9f, 0.9f, 0.9f);
+    float3 ambientColor = float3(0.3, 0.3, 0.3);
 
     // Calculate ambient light
     float3 ambient = input.color.rgb * ambientColor;
@@ -55,6 +58,19 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
     // Combine all three light components
     float3 finalColor = ambient + diffuse + specular;
+    
+    float4 finalColor1 = float4(finalColor, 1.0f);
+    //
+    //
+    //Texture
+    //Texture2D gridTexture;
+    //SamplerState gridSampler;
+    // Sample from the grid texture
+    //float4 textureColor = gridTexture.Sample(gridSampler, input.tex);
+
+    // Combine the vertex color with the texture color
+    //float4 finalColor2 = finalColor1 * textureColor;
 
     return float4(finalColor, 1.0f);
+    //return finalColor2;
 }

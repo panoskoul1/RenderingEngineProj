@@ -26,19 +26,20 @@ namespace RenderingEngineProj
 		// Camera operations
 		void RotateCam(float deltaX, float deltaY);
 		void Zoom(int dx);
-		//void Rotate(float radiansx, float radiansy, float radiansz);
 		void current_cam_position(float x, float y, float z) { cam_pos1[0] = x; cam_pos1[1] = y; cam_pos1[2] = z; };
 
 
 		// Eye is at (0,0.7,1.5), looking at point (0,-0.1,0) with the up-vector along the y-axis.
-		DirectX::XMVECTOR eye = { -50.0f, -50.0f , -50.0f };
+		DirectX::XMVECTOR eye = { 50.0f, 50.0f , 50.0f };
 		DirectX::XMVECTOR at;
 		DirectX::XMVECTOR up;
-		std::vector<float> cam_pos1 = { 20.0f, 20.0f , 20.0f };
+		std::vector<float> cam_pos1 = { 50.0f, 50.0f , 50.0f };
 
 		// Mesh object operations
 		void Shift(float x, float y, float z);
-		void Rotate(float radiansx, float radiansy, float radiansz);
+		void Yaw(float radians);
+		void Pitch(float radians);
+		void Roll(float radians);
 
 
 
@@ -46,14 +47,33 @@ namespace RenderingEngineProj
 		// Global Variables.
 		float pointer_start_X;
 		float pointer_start_Y;
-		VertexPositionColor Vertices[30000];
+		float m_yaw = 0;
+		float m_pitch = 0;
+		float m_roll = 0;
+		VertexPositionColor Vertices[6000000];
+		VertexPositionColor Vertices_table[8];
 		int nVertexCount;
-		unsigned short Indices[60000*3];
+		unsigned short Indices[40000000];
+		unsigned short Indices_table[36];
+		float pos_x = 0;
+		float pos_y = 0;
+		float pos_z = 0;
+
 		int nTriangleCount;
+
+
+
 		void Import3MFFile(const std::string& fileName);
 		void DragObjectToOrigin(int numVertices, int numIndices);
 		void CalculateNormals(int vertexCount, int indexCount);
+		void CalculateNormals1(int vertexCount, int indexCount);
+		void Sample3DSceneRenderer::ApplyTransformation(DirectX::XMMATRIX transformation);
 
+
+		DirectX::XMVECTOR Sample3DSceneRenderer::GetCenterOfMass(int numVertices);
+
+		void Sample3DSceneRenderer::CreateMesh();
+		void Sample3DSceneRenderer::CreatePlane();
 
 
 

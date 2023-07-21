@@ -27,6 +27,10 @@ namespace RenderingEngineProj
 		void ImportMesh1_Pressed() { ImportMesh1_Button_Pressed = true; }
 		void ImportMesh2_Pressed() { ImportMesh2_Button_Pressed = true; }
 		void ImportMesh3_Pressed() { ImportMesh3_Button_Pressed = true; }
+		void ImportMesh4_Pressed() { ImportMesh4_Button_Pressed = true; }
+		void ImportMesh5_Pressed() { ImportMesh5_Button_Pressed = true; }
+		void ImportMesh6_Pressed() { ImportMesh6_Button_Pressed = true; }
+
 		void ShiftX_Pressed() { ShiftX_Button_Pressed = true; }
 		void ShiftX1_Pressed() { ShiftX1_Button_Pressed = true; }
 		void ShiftY_Pressed() { ShiftY_Button_Pressed = true; }
@@ -78,6 +82,9 @@ namespace RenderingEngineProj
 		bool ImportMesh1_Button_Pressed = false;
 		bool ImportMesh2_Button_Pressed = false;
 		bool ImportMesh3_Button_Pressed = false;
+		bool ImportMesh4_Button_Pressed = false;
+		bool ImportMesh5_Button_Pressed = false;
+		bool ImportMesh6_Button_Pressed = false;
 		bool ShiftX_Button_Pressed = false;
 		bool ShiftX1_Button_Pressed = false;
 		bool ShiftY_Button_Pressed = false;
